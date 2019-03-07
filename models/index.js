@@ -2,5 +2,5 @@
 
 module.exports = {
   Show: require("./Show"),
-  User: require("./User")
+  Employee: require("./Employee")
 };

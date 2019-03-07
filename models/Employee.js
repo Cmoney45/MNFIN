@@ -1,13 +1,18 @@
-// models.User.js
+// models.Employee.js
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const employeeSchema = new Schema({
   // What is the user's role in the app
   role: {
     type: String,
     required: true
+  },
+  // What Company is the Employee apart of
+  company: {
+    type: Schema.Types.ObjectId,
+    ref: "Company"
   },
   // All unique info for the user
   info: {
@@ -36,20 +41,13 @@ const userSchema = new Schema({
       default: Date.now
     },
   },
-  favoritedShows: [
+  recentlyViewedPages: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Shows"
-    }
-  ],
-  watchList: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Show"
+      type: String,
     }
   ],
 });
 
-const User = mongoose.model("User", userSchema);
+const Employee = mongoose.model("Employee", employeeSchema);
 
-module.exports = User;
+module.exports = Employee;
